@@ -1,4 +1,4 @@
-const baseUrl = "https://api.api-store.workers.dev/api/bazardor"
+const baseUrl = "https://api.abcz.workers.dev/api/bazardor"
 
 export const getCategories = async () => {
     const res = await fetch(`${baseUrl}/categories`, {

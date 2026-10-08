@@ -1,0 +1,52 @@
+import { getProducts } from "@/lib/api";
+import MarqueeText from "react-marquee-text";
+import "react-marquee-text/dist/styles.css";
+import Link from "next/link";
+
+interface IProducts {
+    id: string;
+    nameBn: string;
+    unit: string;
+    image: string;
+    today: number;
+    change: {
+        dir: string;
+        pct: number;
+    };
+}
+
+const MarqueePage = async () => {
+    const products: IProducts[] = await getProducts();
+
+    return (
+        <div className="sticky top-0 z-50 w-full border-y border-slate-200 bg-white text-slate-800">
+            <div className="mx-auto flex w-full max-w-7xl">
+                <div className="z-10 flex shrink-0 items-center border-r border-slate-200 bg-slate-50 px-3 py-2.5 text-sm font-semibold whitespace-nowrap sm:px-4">
+                    সর্বশেষ দর
+                </div>
+                <div className="min-w-0 flex-1 overflow-hidden">
+                    <MarqueeText direction="right" duration={10}>
+                        {products.map((product) => {
+                            const isDown = product.change.dir === "down";
+                            const direction = isDown ? "▼" : "▲";
+                            return (
+                                <Link href="#"
+                                    key={product.id}
+                                    className="inline-flex items-center border-r border-slate-200 px-4 py-2.5 text-sm whitespace-nowrap transition-colors hover:bg-slate-50">
+                                    <span className="mr-2 text-base">{product.image}</span>
+                                    <span className="font-medium text-slate-800">{product.nameBn}</span>
+                                    <span className="mx-1.5 text-slate-400">{product.today.toLocaleString("bn-BD")} {product.unit === "kg" ? "টাকা/কেজি" : product.unit}</span>
+                                    <span className={`font-semibold ${isDown ? "text-emerald-600" : "text-red-600"}`}>
+                                        {direction} {Math.abs(product.change.pct).toLocaleString("bn-BD")}%
+                                    </span>
+                                </Link>
+                            );
+                        })}
+                    </MarqueeText>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default MarqueePage;

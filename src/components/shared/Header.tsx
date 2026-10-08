@@ -1,9 +1,11 @@
+import { connection } from 'next/server';
 import NavLinks from '../NavLinks';
 import AuthButtons from './AuthButtons';
 import Link from 'next/link';
 
-const Header = () => {
+const Header = async () => {
     
+    await connection();
     const date = new Date().toLocaleDateString('bn-BD', {
         dateStyle: 'full',
     });

@@ -26,7 +26,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <ToastProvider>
           <Header />
           <MarqueePage/>
-          <main className="max-w-7xl mx-auto">{children}</main>
+          <main className="">
+            {children}
+            </main>
         </ToastProvider>
       </body>
     </html>
