@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
-      lang="en"
+      lang="bn"
       data-theme="light"
       className={`${hindsiliguri.className} h-full antialiased`}
     >
@@ -26,7 +26,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <ToastProvider>
           <Header />
           <MarqueePage/>
-          <main className="">
+          <main>
             {children}
             </main>
         </ToastProvider>
