@@ -1,13 +1,14 @@
+import { getCurrentUser } from "@/lib/auth-server";
+import { getBanglaDate } from "@/lib/dateUtils";
 import Image from "next/image";
 import { connection } from "next/server";
+import DashboardStats from "./DashboardStats";
 
 const Banner = async () => {
     await connection();
+    const date = getBanglaDate();
 
-    const date = new Date().toLocaleDateString("bn-BD", {
-        dateStyle: "full",
-        timeZone: "Asia/Dhaka",
-    });
+    const user = await getCurrentUser();
 
     return (
         <section className="bg-[#f0f5f0] px-4 py-7 sm:px-6 lg:px-8 lg:py-8">
@@ -30,14 +31,18 @@ const Banner = async () => {
                 </div>
 
                 <div className="flex justify-center md:justify-end">
-                    <Image
-                        src="/bazar-hero.png"
-                        width={400}
-                        height={400}
-                        alt="বাজারের পণ্যের ছবি"
-                        priority
-                        className="w-[260px] sm:w-[300px] md:w-[340px] lg:w-[380px]"
-                    />
+                    {user ? (
+                        <DashboardStats />
+                    ) : (
+                        <Image
+                            src="/bazar-hero.png"
+                            width={400}
+                            height={400}
+                            alt="বাজারের পণ্যের ছবি"
+                            priority
+                            className="w-[260px] sm:w-[300px] md:w-[340px] lg:w-[380px]"
+                        />
+                    )}
                 </div>
             </div>
         </section>

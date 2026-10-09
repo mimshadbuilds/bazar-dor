@@ -1,10 +1,10 @@
 import { IProducts } from "@/types/products";
 
-const baseUrl = "https://api.abcz.workers.dev/api/bazardor";
+const baseUrl = "https://api.api-store.workers.dev/api/bazardor";
 
 export const getCategories = async () => {
     const res = await fetch(`${baseUrl}/categories`, {
-        cache: "no-store",
+        next: { revalidate: 3600 },
     });
 
     if (!res.ok) {
@@ -17,9 +17,6 @@ export const getCategories = async () => {
 export const getCategory = async (categoryId: string) => {
     const res = await fetch(
         `${baseUrl}/categories/${encodeURIComponent(categoryId)}`,
-        {
-            cache: "no-store",
-        }
     );
 
     if (!res.ok) {
@@ -37,7 +34,7 @@ export const getProducts = async (categoryId?: string): Promise<IProducts[]> => 
     }
 
     const res = await fetch(url.toString(), {
-        cache: "no-store",
+        next: { revalidate: 300 },
     });
 
     if (!res.ok) {
@@ -50,9 +47,6 @@ export const getProducts = async (categoryId?: string): Promise<IProducts[]> => 
 export const getProduct = async (productId: string): Promise<IProducts> => {
     const res = await fetch(
         `${baseUrl}/products/${encodeURIComponent(productId)}`,
-        {
-            cache: "no-store",
-        }
     );
 
     if (!res.ok) {

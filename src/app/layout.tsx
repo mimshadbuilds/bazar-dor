@@ -4,6 +4,9 @@ import "./globals.css";
 import ToastProvider from "./ToastProvider";
 import Header from "@/components/shared/Header";
 import MarqueePage from "@/components/homepage/Marquee";
+import Footer from "@/components/shared/Footer";
+import { Suspense } from "react";
+
 
 const hindsiliguri = Hind_Siliguri({
   subsets: ["bengali", "latin"],
@@ -24,11 +27,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col">
         <ToastProvider>
-          <Header />
+          <Suspense fallback={<div className="header-skeleton" />}>
+            <Header />
+          </Suspense>
           <MarqueePage/>
           <main>
             {children}
-            </main>
+          </main>
+          <Footer />
         </ToastProvider>
       </body>
     </html>
