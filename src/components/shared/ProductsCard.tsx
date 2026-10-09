@@ -1,5 +1,5 @@
 import { getPriceUnit, getUnitLabel } from "@/lib/ConversionUtils";
-import { IProducts } from "../homepage/ExpensiveProducts";
+import { IProducts } from "@/types/products";
 
 interface ProductsCardProps {
     product: IProducts;
@@ -9,9 +9,9 @@ const ProductsCard = ({ product }: ProductsCardProps) => {
     const isDown = product.change.dir === "down";
 
     return (
-        <div className="rounded-[20px] border border-[#dce5dc] bg-white p-5 transition duration-300 hover:-translate-y-0.5 hover:shadow-md">
+        <div className="rounded-[20px] border border-[#dce5dc] bg-white p-5 transition duration-300 hover:-translate-y-0.5 hover:shadow-md hover:border-green-600">
             <div className="flex items-center gap-4">
-                <div className="grid size-[60px] shrink-0 place-items-center rounded-2xl bg-[#f0f5f0] text-[30px]">
+                <div className="grid size-15 shrink-0 place-items-center rounded-2xl bg-[#f0f5f0] text-[30px]">
                     {product.image}
                 </div>
                 <div className="min-w-0">

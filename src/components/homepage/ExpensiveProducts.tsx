@@ -1,22 +1,13 @@
 import { getProducts } from "@/lib/api";
 import ProductsCard from "../shared/ProductsCard";
+import { IProducts } from "@/types/products";
 
-export interface IProducts {
-    id: string;
-    nameBn: string;
-    unit: string;
-    image: string;
-    today: number;
-    change: {
-        dir: string;
-        pct: number;
-    };
-}
+
 
 const ExpensiveProducts = async () => {
     const pricedProducts = await getProducts();
     const filteredProducts = [...pricedProducts].filter(product => product.change.dir === 'up');
-    const topSixExpProducts = filteredProducts.sort((a, b) => b.change.pct - a.change.pct).slice(0, 6);
+    const topSixExpProducts: IProducts[] = filteredProducts.sort((a, b) => b.change.pct - a.change.pct).slice(0, 6);
     // console.log(topSixExpProducts)
     return (
         <section className="bg-[#f0f5f0] px-4 py-8 sm:px-6 lg:px-8">

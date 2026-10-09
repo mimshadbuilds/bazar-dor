@@ -2,18 +2,8 @@ import { getProducts } from "@/lib/api";
 import MarqueeText from "react-marquee-text";
 import "react-marquee-text/dist/styles.css";
 import Link from "next/link";
+import { IProducts } from "@/types/products";
 
-interface IProducts {
-    id: string;
-    nameBn: string;
-    unit: string;
-    image: string;
-    today: number;
-    change: {
-        dir: string;
-        pct: number;
-    };
-}
 
 const MarqueePage = async () => {
     const products: IProducts[] = await getProducts();
