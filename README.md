@@ -18,9 +18,9 @@
 
 ## 📖 What is BazarDor?
 
-BazarDor helps users **compare commodity prices across markets**, **track price changes**, and **save items they want to buy later**. Built with Next.js, TypeScript, and Tailwind CSS, it provides [...]
+BazarDor helps users **compare commodity prices across markets**, **track price changes**, and **sort products by price, popularity, ratings, and availability** to find the best deals faster. Built with Next.js, TypeScript, and Tailwind CSS, it provides a streamlined marketplace experience for smarter everyday purchasing.
 
-Users can browse categories, view product details, manage favorites, and sign in securely — all designed for smarter everyday purchasing.
+Users can browse categories, view product details, compare listings, and sort products to make quicker and more informed buying decisions.
 
 ---
 
