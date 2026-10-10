@@ -8,6 +8,9 @@
 [![React](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-v4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
+[![BetterAuth](https://img.shields.io/badge/BetterAuth-Latest-10B981?style=for-the-badge)](https://better-auth.com/)
+[![DaisyUI](https://img.shields.io/badge/DaisyUI-5-1AD1A5?style=for-the-badge)](https://daisyui.com/)
+[![Resend](https://img.shields.io/badge/Resend-Latest-000000?style=for-the-badge)](https://resend.com/)
 
 </div>
 
