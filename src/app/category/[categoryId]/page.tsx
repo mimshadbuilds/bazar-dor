@@ -1,4 +1,3 @@
-
 import { getCategory, getProducts } from "@/lib/api";
 import type { IProducts } from "@/types/products";
 import ProductSort from "../ProductSort";
@@ -16,7 +15,6 @@ const ProductsCategory = async ({ params }: {params: { categoryId: string }}) =>
                     <span className="flex size-11 shrink-0 items-center justify-center rounded-xl bg-[#f0f5f0] text-3xl">
                         {category.icon}
                     </span>
-
                     <div className="min-w-0">
                         <h1 className="text-2xl font-bold leading-tight text-[#17251b]">
                             {category.nameBn}
