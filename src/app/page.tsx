@@ -2,17 +2,24 @@ import AllProducts from "@/components/homepage/AllProducts";
 import ExpensiveProducts from "@/components/homepage/ExpensiveProducts";
 import InexpensiveProducts from "@/components/homepage/InexpensiveProducts";
 import Banner from "@/components/shared/Banner";
+import ProductsSectionSkeleton from "@/components/shared/ProductsSectionSkeleton";
 import { Suspense } from "react";
 
 export default function Home() {
   return (
     <div>
-      <Suspense fallback={ <h1>তারিখ লোড হচ্ছে...</h1> }>
         <Banner />
-      </Suspense>      
-      <ExpensiveProducts />
-      <InexpensiveProducts />
-      <AllProducts />
+        <main className="mx-auto max-w-6xl space-y-10 px-4 py-8">
+            <Suspense fallback={<ProductsSectionSkeleton title="দামি পণ্য" count={4} />}>
+                <ExpensiveProducts />
+            </Suspense>
+            <Suspense fallback={<ProductsSectionSkeleton title="সস্তা পণ্য" count={4} />}>
+                <InexpensiveProducts />
+            </Suspense>
+            <Suspense fallback={<ProductsSectionSkeleton title="সকল পণ্য" count={8} />}>
+                <AllProducts />
+            </Suspense>
+        </main>
     </div>
   );
 }

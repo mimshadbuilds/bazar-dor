@@ -6,7 +6,7 @@ import { IProducts } from "@/types/products";
 
 const MarqueePage = async () => {
     const products: IProducts[] = await getProducts();
-    console.log(products)
+    // console.log(products)
         
     return (
         <div className="sticky top-0 z-40 w-full border-y border-slate-200 bg-white text-slate-800">
@@ -20,7 +20,7 @@ const MarqueePage = async () => {
                             const isDown = product.change.dir === "down";
                             const direction = isDown ? "▼" : "▲";
                             return (
-                                <Link href="#"
+                                <Link href={`/products/${product.id}`}
                                     key={product.id}
                                     className="inline-flex items-center border-r border-slate-200 px-4 py-2.5 text-sm whitespace-nowrap transition-colors hover:bg-slate-50">
                                     <span className="mr-2 text-base">{product.image}</span>

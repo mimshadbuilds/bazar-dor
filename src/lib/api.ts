@@ -1,6 +1,6 @@
 import { IProducts } from "@/types/products";
 
-const baseUrl = "https://api.api-store.workers.dev/api/bazardor";
+const baseUrl = "https://openapi.programming-hero.com/api/bazardor";
 
 export const getCategories = async () => {
     const res = await fetch(`${baseUrl}/categories`, {

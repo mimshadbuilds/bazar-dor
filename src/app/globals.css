@@ -2,4 +2,4 @@
 @plugin "daisyui" {
     exclude: toast
 };
-
+@import "@heroui/styles";

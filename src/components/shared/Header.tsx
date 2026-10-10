@@ -10,22 +10,30 @@ const Header = async () => {
     const date = getBanglaDate();
     
     return (
-        <section className='border-b border-neutral-200 bg-white'>    
-                <header className='relative z-50 max-w-6xl mx-auto px-4 py-4'>
-                    <Link href="/">
-                    <div className='flex flex-col justify-center items-center gap-2 sm:flex-row sm:gap-2'>
-                        <span className='size-10 grid bg-[#05893E] items-center text-lg text-white rounded-xl p-2'>🛒</span>
-                        <div className='leading-tight'>
-                            <h1 className='block text-xl font-bold'>বাজার দর</h1>
-                            <p className='block text-xs text-base-content/60'>{date}</p>
+        <section>
+            <div className="border-b border-neutral-100 bg-white/90 backdrop-blur-md">
+                <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
+                    <Link href="/" className="flex items-center gap-3">
+                        <span className="grid size-11 place-items-center rounded-xl bg-[#05893E] text-xl text-white">
+                            🛒
+                        </span>
+                        <div className="leading-tight">
+                            <h1 className="text-lg font-bold text-[#17251b] sm:text-xl">
+                                বাজার দর
+                            </h1>
+                            <p className="text-[11px] text-neutral-500 sm:text-xs">
+                                {date}
+                            </p>
                         </div>
-                    </div>
                     </Link>
-                    <div className='absolute right-4 flex gap-3 text-sm top-4'>
+                    <div className="flex items-center gap-3 text-sm">
                         <AuthButtons />
                     </div>
-                    <NavLinks />
-                </header>
+                </div>
+            </div>
+            <div className="mx-auto max-w-6xl px-4 py-2 bg-white">
+                <NavLinks />
+            </div>
         </section>
     );
 };

@@ -1,6 +1,7 @@
 import { getProducts } from "@/lib/api";
 import ProductsCard from "../shared/ProductsCard";
 import { IProducts } from "@/types/products";
+import Link from "next/link";
 
 const AllProducts = async () => {
     const products: IProducts[] = await getProducts();
@@ -14,11 +15,14 @@ const AllProducts = async () => {
                 </div>
 
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+
                     {products.map((product) => (
+                        <Link href={`/products/${product.id}`} key={product.id}> 
                         <ProductsCard
                             key={product.id}
                             product={product}
                         />
+                        </Link>
                     ))}
                 </div>
             </div>

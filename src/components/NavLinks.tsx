@@ -11,7 +11,7 @@ interface INavs {
 const NavLinks = async () => {
     const navItems: INavs[] = await getCategories();
     return (
-        <nav className="flex justify-center items-center gap-x-5 gap-y-2 text-sm text-slate-800 mt-8">
+        <nav className="flex justify-start gap-4 overflow-x-auto px-4 pb-3 text-sm text-[#26352a] sm:gap-6 md:mx-auto md:max-w-6xl md:px-4">
             {navItems.map(nl => 
             <Link href={`/category/${nl.slug}`} key={nl.id}>
             {nl.icon} {nl.nameBn}

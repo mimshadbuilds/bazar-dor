@@ -1,13 +1,13 @@
 const Footer = () => {
     return (
-        <footer className="footer sm:footer-horizontal max-w-6xl mx-auto bg-[#ffff] text-slate-600 font-normal items-center p-5">
-            <aside className="grid-flow-col items-center">
-                <p>বাজার দর — প্রয়োজনীয় পণ্যের দাম এক নজরে।</p>
-            </aside>
-            <nav className="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
-                <p>সকল দাম সম্ভাব্য; বাজার অবস্থার ওপর নির্ভর করে পরিবর্তিত হয়।</p>
-            </nav>
-        </footer>
+<footer className="w-full bg-white p-5 text-slate-600 font-normal">
+    <div className="mx-auto flex w-full max-w-6xl flex-col items-center justify-center gap-3 text-center md:flex-row md:items-center md:justify-between md:text-left">
+        <p>বাজার দর — প্রয়োজনীয় পণ্যের দাম এক নজরে।</p>
+        <p className="md:text-right">
+            সকল দাম সম্ভাব্য; বাজার অবস্থার ওপর নির্ভর করে পরিবর্তিত হয়।
+        </p>
+    </div>
+</footer>
     );
 };
 

@@ -28,7 +28,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col">
         <ToastProvider>
           <Suspense fallback={<div className="header-skeleton" />}>
+          <header className="sticky top-0 z-50 shadow-sm">
             <Header />
+          </header>
           </Suspense>
           <MarqueePage/>
           <main>

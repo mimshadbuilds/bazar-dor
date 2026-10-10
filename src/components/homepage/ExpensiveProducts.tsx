@@ -1,8 +1,7 @@
 import { getProducts } from "@/lib/api";
 import ProductsCard from "../shared/ProductsCard";
 import { IProducts } from "@/types/products";
-
-
+import Link from "next/link";
 
 const ExpensiveProducts = async () => {
     const pricedProducts = await getProducts();
@@ -14,18 +13,18 @@ const ExpensiveProducts = async () => {
             <div className="mx-auto w-full max-w-6xl">
                 <div className="mb-4 flex items-center gap-2">
                     <span className="text-lg text-red-500">▲</span>
-
                     <h2 className="text-xl font-bold text-[#111] sm:text-2xl">
                         আজ দাম বেড়েছে
                     </h2>
                 </div>
-
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                     {topSixExpProducts.map((product) => (
+                        <Link key={product.id} href={`/products/${product.id}`}>
                         <ProductsCard
                             key={product.id}
                             product={product}
                         />
+                    </Link>
                     ))}
                 </div>
             </div>

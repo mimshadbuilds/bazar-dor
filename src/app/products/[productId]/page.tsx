@@ -49,10 +49,8 @@ const ProductDetails = async ({ params }: { params: { productId: string }}) => {
                         হোম
                     </Link>
                     <span>›</span>
-                    <Link
-                        href={`/category/${product.category}`}
-                        className="hover:text-[#07883e]"
-                    >
+                    <Link href={`/category/${product.category}`}
+                        className="hover:text-[#07883e]">
                         {product.categoryNameBn}
                     </Link>
                     <span>›</span>
@@ -80,8 +78,8 @@ const ProductDetails = async ({ params }: { params: { productId: string }}) => {
                                 {isUp
                                     ? "বেড়েছে"
                                     : isDown
-                                      ? "কমেছে"
-                                      : "অপরিবর্তিত"}{" "}
+                                    ? "কমেছে"
+                                    : "অপরিবর্তিত"}{" "}
                                 · {formatPrice(product.yesterday)} টাকা
                             </p>
                         </div>
@@ -103,9 +101,9 @@ const ProductDetails = async ({ params }: { params: { productId: string }}) => {
                             className={`mt-1 text-xs font-semibold ${
                                 isUp
                                     ? "text-[#e53935]"
-                                    : isDown
-                                      ? "text-[#07883e]"
-                                      : "text-[#69766b]"
+                                    : isDown 
+                                    ? "text-[#07883e]"
+                                    : "text-[#69766b]"
                             }`}>
                             {isUp ? "▲" : isDown ? "▼" : "—"}{" "}
                             {formatPrice(product.change.pct)}%
@@ -117,7 +115,6 @@ const ProductDetails = async ({ params }: { params: { productId: string }}) => {
                     <h2 className="mb-3 text-sm font-bold text-[#26352a]">
                         দামের সারসংক্ষেপ
                     </h2>
-
                     <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
                         <div className="rounded-xl border border-[#e0e8e1] p-4">
                             <p className="text-xs text-[#69766b]">
@@ -131,7 +128,6 @@ const ProductDetails = async ({ params }: { params: { productId: string }}) => {
                                 বাজারের সর্বনিম্ন দর
                             </p>
                         </div>
-
                         <div className="rounded-xl border border-[#e0e8e1] p-4">
                             <p className="text-xs text-[#69766b]">
                                 সর্বোচ্চ দাম
@@ -144,7 +140,6 @@ const ProductDetails = async ({ params }: { params: { productId: string }}) => {
                                 বাজারের সর্বোচ্চ দর
                             </p>
                         </div>
-
                         <div className="rounded-xl border border-[#e0e8e1] p-4">
                             <p className="text-xs text-[#69766b]">
                                 গড় দাম
@@ -183,7 +178,6 @@ const ProductDetails = async ({ params }: { params: { productId: string }}) => {
                                         </th>
                                     </tr>
                                 </thead>
-
                                 <tbody>
                                     {product.markets.map((market, index) => (
                                         <tr key={`${market.market}-${market.division}`}
@@ -220,6 +214,13 @@ const ProductDetails = async ({ params }: { params: { productId: string }}) => {
                         </p>
                     )}
                 </section>
+                <div className="flex flex-wrap gap-2 mt-5">
+                    <Link href={`/category/${product.category}`}
+                        className="btn btn-ghost gap-2 rounded-md">
+                        <span>{product.categoryIcon}</span>
+                        <span>সব {product.categoryNameBn}</span>
+                    </Link>
+                </div>
             </div>
         </main>
     );
