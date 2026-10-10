@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+    title: "পেজটি খুঁজে পাওয়া যায়নি",
+    description: "আপনি যে পেজটি খুঁজছেন সেটি পাওয়া যায়নি। আজকের বাজারদর দেখতে হোমপেজে ফিরে যান।",
+};
 
 export default function NotFound() {
     return (

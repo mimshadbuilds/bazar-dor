@@ -14,8 +14,11 @@ const hindsiliguri = Hind_Siliguri({
 });
 
 export const metadata: Metadata = {
-  title: "বাজার দর | আজকের দাঁড়ির দাম",
-  description: "",
+  title: {
+    default: "বাজার দর | আজকের বাজারের দাম",
+    template: "%s | বাজার দর",
+  },
+  description: "বাংলাদেশের বাজারে চাল, ডাল, তেল, সবজি, মাছ ও মাংসের আজকের দাম এবং দামের পরিবর্তন দেখুন।",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -27,7 +30,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col bg-[#f0f5f0]">
         <Toaster position="top-center" />
-          <Suspense fallback={<div className="header-skeleton" />}>
+          <Suspense fallback={null}>
           <header className="sticky top-0 z-50 shadow-sm">
             <Header />
           </header>

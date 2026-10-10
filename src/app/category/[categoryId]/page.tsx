@@ -1,6 +1,23 @@
+import type { Metadata } from "next";
 import { getCategory, getProducts } from "@/lib/api";
 import type { IProducts } from "@/types/products";
 import ProductSort from "../ProductSort";
+
+type CategoryPageProps = {
+    params: Promise<{ categoryId: string }>;
+};
+
+export async function generateMetadata(
+    { params }: CategoryPageProps,
+): Promise<Metadata> {
+    const { categoryId } = await params;
+    const category = await getCategory(categoryId);
+
+    return {
+        title: `${category.nameBn} বাজারদর`,
+        description: `${category.nameBn} পণ্যের আজকের বাজারদর, বাজারভিত্তিক দাম এবং দামের পরিবর্তন দেখুন।`,
+    };
+}
 
 const ProductsCategory = async ({ params }: {params: { categoryId: string }}) => {
     const { categoryId } = await params;

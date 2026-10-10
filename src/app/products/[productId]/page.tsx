@@ -1,7 +1,32 @@
+import type { Metadata } from "next";
 import { getProduct } from "@/lib/api";
 import type { IProducts } from "@/types/products";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+
+type ProductPageProps = {
+    params: Promise<{ productId: string }>;
+};
+
+export async function generateMetadata(
+    { params }: ProductPageProps,
+): Promise<Metadata> {
+    const { productId } = await params;
+    let product: IProducts;
+
+    try {
+        product = await getProduct(productId);
+    } catch {
+        notFound();
+    }
+
+    if (!product) notFound();
+
+    return {
+        title: `${product.nameBn} আজকের দাম`,
+        description: `${product.nameBn} এর আজকের দাম ${product.today.toLocaleString("bn-BD")} টাকা। ${product.categoryNameBn} বিভাগের বাজারভিত্তিক দর ও দামের পরিবর্তন দেখুন।`,
+    };
+}
 
 const formatPrice = (price: number) =>
     price.toLocaleString("bn-BD", {
@@ -58,7 +83,6 @@ const ProductDetails = async ({ params }: { params: { productId: string }}) => {
                         {product.nameBn}
                     </span>
                 </nav>
-
                 <section className="flex flex-col justify-between gap-4 rounded-xl border border-[#e0e8e1] bg-[#fbfdfb] p-4 sm:flex-row sm:items-center sm:p-5">
                     <div className="flex min-w-0 items-center gap-3">
                         <span className="flex size-[52px] shrink-0 items-center justify-center rounded-xl bg-[#f0f5f0] text-3xl">
@@ -84,7 +108,6 @@ const ProductDetails = async ({ params }: { params: { productId: string }}) => {
                             </p>
                         </div>
                     </div>
-
                     <div className="flex shrink-0 items-center justify-between gap-6 rounded-xl bg-[#f0f5f0] px-4 py-3 sm:min-w-[112px] sm:flex-col sm:gap-0 sm:text-center">
                         <div>
                             <p className="text-xs text-[#69766b]">
