@@ -2,11 +2,13 @@ import { mongodbAdapter } from "@better-auth/mongo-adapter";
 import { betterAuth } from "better-auth";
 import { MongoClient } from "mongodb";
 
-const client = new MongoClient(process.env.MONGODB_URL!);
-const database = client.db('bazardor-auth-db');
+const client = new MongoClient(process.env.MONGODB_URL!, {
+    maxPoolSize: 10,
+    serverSelectionTimeoutMS: 5000,
+});
 
 export const auth = betterAuth({
-        emailAndPassword: { 
+    emailAndPassword: { 
         enabled: true, 
     },
 
@@ -22,7 +24,7 @@ export const auth = betterAuth({
         },
     },
     
-    database: mongodbAdapter(database, {
+    database: mongodbAdapter(client.db('bazardor-auth-db'), {
         client,
     })
 })
