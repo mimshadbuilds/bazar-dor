@@ -1,9 +1,11 @@
 "use client";
 
+import RedirectToast from "@/components/shared/RedirectToast";
 import { authClient, signIn } from "@/lib/auth-client";
-import { Description, FieldError, Form, InputGroup, Label, TextField, toast } from "@heroui/react";
+import { Description, FieldError, Form, InputGroup, Label, TextField } from "@heroui/react";
 import Link from "next/link";
-import React from "react";
+import React, { Suspense } from "react";
+import toast from "react-hot-toast";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 
 const SignInPage = () => {
@@ -23,12 +25,12 @@ const SignInPage = () => {
         });
 
         if(error) {
-            toast.danger(error.message);
+            toast.error(error.message ?? "সাইন ইন করতে সমস্যা হয়েছে।");
             return;
         }
 
         if(data) {
-            toast.success("সাইন ইন সফল হয়েছে!");
+            toast.success("সফলভাবে সাইন ইন হয়েছে।");
         }
     };
 
@@ -47,6 +49,11 @@ const SignInPage = () => {
 };
 
     return (
+    <>  
+        <Suspense fallback={null}>
+            <RedirectToast />
+        </Suspense>
+
         <main className="flex min-h-[calc(100vh-64px)] flex-col items-center bg-[#f0f5f0] px-4 py-8 sm:py-10">
             <header className="mb-7 text-center">
                 <h1 className="text-xl font-semibold tracking-tight text-[#17251b] sm:text-2xl">সাইন ইন</h1>
@@ -103,6 +110,7 @@ const SignInPage = () => {
             </section>
             <Link href="/" className="mt-7 text-xs text-[#69766b] underline underline-offset-4 transition hover:text-[#07883e] sm:text-sm">← হোম পেজে ফিরে যান</Link>
         </main>
+    </>  
     );
 };
 

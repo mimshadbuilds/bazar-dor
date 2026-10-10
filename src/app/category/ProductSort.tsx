@@ -46,11 +46,9 @@ const ProductSort = ({ products }: { products: IProducts[] }) => {
                     />
                 </div>
             </div>
-
             <p className="mb-3 mt-4 text-sm text-[#59685d]">
                 মোট {allSortProducts.length.toLocaleString("bn-BD")}টি পণ্য দেখানো হচ্ছে
             </p>
-
             {allSortProducts.length > 0 ? (
                 <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
                     {allSortProducts.map((product) => (

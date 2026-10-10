@@ -19,8 +19,7 @@ const InexpensiveProducts = async () => {
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                     {topSixCheapProducts.map((product) => (
                     <Link key={product.id} href={`/products/${product.id}`}>
-                        <ProductsCard product={product}
-                        />
+                        <ProductsCard product={product} />
                     </Link>
                     ))}
                 </div>

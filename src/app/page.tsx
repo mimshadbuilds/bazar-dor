@@ -10,10 +10,10 @@ export default function Home() {
     <div>
         <Banner />
         <main className="mx-auto max-w-6xl space-y-10 px-4 py-8">
-            <Suspense fallback={<ProductsSectionSkeleton title="দামি পণ্য" count={4} />}>
+            <Suspense fallback={<ProductsSectionSkeleton title="দামি পণ্য" count={6} />}>
                 <ExpensiveProducts />
             </Suspense>
-            <Suspense fallback={<ProductsSectionSkeleton title="সস্তা পণ্য" count={4} />}>
+            <Suspense fallback={<ProductsSectionSkeleton title="সস্তা পণ্য" count={6} />}>
                 <InexpensiveProducts />
             </Suspense>
             <Suspense fallback={<ProductsSectionSkeleton title="সকল পণ্য" count={8} />}>

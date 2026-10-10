@@ -1,4 +1,4 @@
-import NavLinks from '../NavLinks';
+import NavLinks from './NavLinks';
 import AuthButtons from './AuthButtons';
 import Link from 'next/link';
 import { getBanglaDate } from '@/lib/dateUtils';
@@ -31,7 +31,7 @@ const Header = async () => {
                     </div>
                 </div>
             </div>
-            <div className="mx-auto max-w-6xl px-4 py-2 bg-white">
+            <div className=" px-4 py-2 bg-white">
                 <NavLinks />
             </div>
         </section>

@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import { Hind_Siliguri } from "next/font/google";
 import "./globals.css";
-import ToastProvider from "./ToastProvider";
 import Header from "@/components/shared/Header";
 import MarqueePage from "@/components/homepage/Marquee";
 import Footer from "@/components/shared/Footer";
 import { Suspense } from "react";
+import { Toaster } from "react-hot-toast";
 
 
 const hindsiliguri = Hind_Siliguri({
@@ -25,8 +25,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       data-theme="light"
       className={`${hindsiliguri.className} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
-        <ToastProvider>
+      <body className="min-h-full flex flex-col bg-[#f0f5f0]">
+        <Toaster position="top-center" />
           <Suspense fallback={<div className="header-skeleton" />}>
           <header className="sticky top-0 z-50 shadow-sm">
             <Header />
@@ -37,7 +37,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             {children}
           </main>
           <Footer />
-        </ToastProvider>
       </body>
     </html>
   );

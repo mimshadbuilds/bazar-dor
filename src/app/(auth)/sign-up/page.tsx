@@ -1,9 +1,10 @@
 "use client";
 
 import { authClient, signUp } from "@/lib/auth-client";
-import { Description, FieldError, Form, Input, Label, TextField, toast } from "@heroui/react";
+import { Description, FieldError, Form, Input, Label, TextField } from "@heroui/react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import toast from "react-hot-toast";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 
 const SignUpPage = () => {
@@ -23,28 +24,28 @@ const SignUpPage = () => {
         });
 
         if (data) {
-            toast.success("সাইন আপ সফল হয়েছে! একাউন্ট ভেরিফাই করতে আপনার ইমেইল চেক করুন।");
+            toast.success("অভিনন্দন! সাইন আপ সফল হয়েছে।");
             redirect("/sign-in");
         }
 
         if (error) {
-            toast.danger("সাইন আপ অসফল! এই ইমেইলে ইতিমধ্যে ইউজার আছে, নতুন ইমেইল দিয়ে চেষ্টা করুন।");
+            toast.error("সাইন আপ অসফল! এই ইমেইলে ইতিমধ্যে ইউজার আছে, নতুন ইমেইল দিয়ে চেষ্টা করুন।");
         }
-    };
+};
 
-        const handleGoogleSignIn = async () => {
-            await authClient.signIn.social({
-                provider: "google",
-                callbackURL: "/",
-            });
-    };
-    
-        const handleGitHubSignIn = async () => {
-            await authClient.signIn.social({
-            provider: "github",
+    const handleGoogleSignIn = async () => {
+        await authClient.signIn.social({
+            provider: "google",
             callbackURL: "/",
         });
-    };
+};
+    
+    const handleGitHubSignIn = async () => {
+        await authClient.signIn.social({
+        provider: "github",
+        callbackURL: "/",
+    });
+};
 
     return (
         <main className="flex min-h-[calc(100vh-64px)] flex-col items-center bg-[#f0f5f0] px-4 py-8 sm:py-10">

@@ -22,8 +22,7 @@ const AuthButtons = () => {
         setIsMenuOpen(false);
         router.push("/sign-in");
         router.refresh();
-    };
-
+};
     if (isPending) return null;
 
     if (error || !user) {
@@ -56,16 +55,16 @@ const AuthButtons = () => {
 
             {isMenuOpen && (
                 <>
-                <button type="button" aria-label="মেনু বন্ধ করুন" className="fixed inset-0 z-40 cursor-default" onClick={() => setIsMenuOpen(false)} />
-                    <div className="absolute right-0 top-full z-50 mt-3 w-64 rounded-2xl border border-[#dce5dd] bg-[#fbfdfb] p-4 shadow-lg">
-                        <div className="border-b border-[#e5ebe5] pb-3">
-                            <p className="truncate font-semibold text-[#17251b]">{user.name}</p>
-                            <p className="mt-1 truncate text-sm text-[#69766b]">{user.email}</p>
-                        </div>
-                        <Link href="/profile" onClick={() => setIsMenuOpen(false)} className="mt-2 flex items-center gap-3 rounded-lg px-3 py-3 text-sm font-medium text-[#17251b] transition hover:bg-[#f0f5f0]">
-                            <span><FaUserCheck size="18" /></span>
-                            আমার প্রোফাইল
-                        </Link>
+                    <button type="button" aria-label="মেনু বন্ধ করুন" className="fixed inset-0 z-40 cursor-default" onClick={() => setIsMenuOpen(false)} />
+                        <div className="absolute right-0 top-full z-50 mt-3 w-64 rounded-2xl border border-[#dce5dd] bg-[#fbfdfb] p-4 shadow-lg">
+                            <div className="border-b border-[#e5ebe5] pb-3">
+                                <p className="truncate font-semibold text-[#17251b]">{user.name}</p>
+                                <p className="mt-1 truncate text-sm text-[#69766b]">{user.email}</p>
+                            </div>
+                            <Link href="/profile" onClick={() => setIsMenuOpen(false)} className="mt-2 flex items-center gap-3 rounded-lg px-3 py-3 text-sm font-medium text-[#17251b] transition hover:bg-[#f0f5f0]">
+                                <span><FaUserCheck size="18" /></span>
+                                আমার প্রোফাইল
+                            </Link>
                         <button type="button" onClick={handleSignOut} className="flex w-full items-center gap-3 rounded-lg px-3 py-3 text-left text-sm font-semibold text-red-600 transition hover:bg-red-50">
                             <span>↪</span>
                             সাইন আউট

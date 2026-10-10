@@ -3,15 +3,15 @@
 
 import { authClient } from "@/lib/auth-client";
 import { FormEvent, useState } from "react";
-import { toast } from "@heroui/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
+import toast from "react-hot-toast";
 
 const Profile = () => {
     const router = useRouter();
     const { data: session, isPending } = authClient.useSession();
     const user = session?.user;
+
     const [save, setSave] = useState(false);
 
     const handleUpdateProfile = async (e: FormEvent<HTMLFormElement>) => {
@@ -27,15 +27,14 @@ const Profile = () => {
                 name,
                 image: image || undefined,
             });
-
             if (error) {
-                toast.danger(error.message);
+                toast.error(error.message ?? "একটি সমস্যা হয়েছে!");
                 return;
             }
 
             toast.success("প্রোফাইল আপডেট সফল হয়েছে!");
         } catch {
-            toast.danger("প্রোফাইল আপডেট করা যায়নি। আবার চেষ্টা করুন।");
+            toast.error("প্রোফাইল আপডেট করা যায়নি। আবার চেষ্টা করুন।");
         } finally {
             setSave(false);
         }
@@ -45,10 +44,11 @@ const Profile = () => {
         const { error } = await authClient.signOut();
 
         if(error) {
-            toast.danger("সাইন আউট করা যায়নি।");
+            toast.error("সাইন আউট করা যায়নি। আবার চেষ্টা করুন।");
             return;
         }
 
+        toast.success("আপনার সাইন আউট সফল হয়েছে।");
         router.push("/sign-in");
         router.refresh();
     };
@@ -86,16 +86,13 @@ const Profile = () => {
                     <h1 className="text-xl font-bold text-[#17251b] sm:text-2xl">আমার প্রোফাইল</h1>
                     <p className="mt-1 text-sm text-[#69766b]">আপনার অ্যাকাউন্টের তথ্য এখানে দেখুন ও পরিবর্তন করুন।</p>
                 </header>
-
                 <div className="flex items-center gap-4 rounded-2xl border border-[#dce5dd] bg-[#fbfdfb] p-4 sm:p-5">
                     <div className="grid size-16 shrink-0 place-items-center overflow-hidden rounded-full bg-[#f0f5f0] ring-2 ring-[#dce5dd] ring-offset-2 ring-offset-[#fbfdfb]">
                         <span className="col-start-1 row-start-1 text-2xl font-semibold text-[#07883e]">
                             {(user.name ?? "U").charAt(0).toUpperCase()}
                         </span>
-
                         {user.image && (
-                            <img
-                                src={user.image}
+                            <img src={user.image}
                                 alt={user.name ?? "Profile"}
                                 className="col-start-1 row-start-1 size-full rounded-full object-cover"
                                 onError={(e) => {
@@ -104,7 +101,6 @@ const Profile = () => {
                             />
                         )}
                     </div>
-
                     <div className="min-w-0 flex-1">
                         <h2 className="truncate font-semibold text-[#17251b]">{user.name}</h2>
                         <p className="mt-1 truncate text-sm text-[#69766b]">{user.email}</p>
@@ -113,7 +109,6 @@ const Profile = () => {
                         ↪ সাইন আউট
                     </button>
                 </div>
-
                 <section className="mt-4 rounded-2xl border border-[#dce5dd] bg-[#fbfdfb] p-5 sm:p-6">
                     <h2 className="mb-5 text-base font-bold text-[#17251b]">তথ্য</h2>
                     <form key={user.id} onSubmit={handleUpdateProfile} className="flex flex-col gap-5">
