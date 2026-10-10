@@ -26,19 +26,19 @@ Users can browse categories, view product details, compare listings, and sort pr
 ## Key Features
 
 ### 1. 📊 Price Comparison
-Browse commodities from multiple markets in one place. See current prices, vendor details, and product availability at a glance.
+Browse commodities from multiple markets in one place. Compare prices with yesterday, last week, and last month to understand how costs change over time.
 
 ### 2. 📈 Product Details
-View complete product information, including pricing history, vendor performance, market comparison, and stock availability.
+View complete product information, including pricing history, market comparison, and stock availability. 
 
 ### 3. 🔄 Product Sorting
-Sort products by price, popularity, ratings, and availability to quickly find the best deals and make informed purchasing decisions.
+Sort products by price in ascending or descending order and improve availability to quickly find the best deals and make informed purchasing decisions.
 
 ### 4. 🏷️ Category Browsing
-Explore organized product categories with filtering and sorting options for better discovery and decision-making.
+Explore market items organized into categories for easier navigation, organized product categories with filtering and sorting options for better discovery and decision-making.
 
 ### 5. 🔐 Secure Authentication
-Sign in, manage your profile, and keep your saved items and preferences synced across the app.
+Sign in or create an account, then manage your profile on a personalized profile page.
 
 ---
 
