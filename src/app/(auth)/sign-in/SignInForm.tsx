@@ -4,13 +4,22 @@ import RedirectToast from "@/components/shared/RedirectToast";
 import { authClient, signIn } from "@/lib/auth-client";
 import { Description, FieldError, Form, InputGroup, Label, TextField } from "@heroui/react";
 import Link from "next/link";
-import React, { Suspense } from "react";
+import { useRouter } from "next/navigation";
+import React, { Suspense, useState } from "react";
 import toast from "react-hot-toast";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 
-const SignInForm = () => {
+interface SignInFormProps {
+    redirectTo: string,
+    reason?: string
+}
+const SignInForm = ({redirectTo, reason}: SignInFormProps) => {
+    const router = useRouter()
+    const [loading, setLoading] = useState(false);
     const handleSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        setLoading(true);
+
         const formData = new FormData(e.currentTarget);
         const resData: Record<string, string> = {};
         formData.forEach((value, key) => {
@@ -21,31 +30,50 @@ const SignInForm = () => {
             email: resData.email as string,
             password: resData.password as string,
             rememberMe: true,
-            callbackURL: "/",
+            callbackURL: redirectTo,
         });
 
         if(error) {
-            toast.error(error.message ?? "সাইন ইন করতে সমস্যা হয়েছে।");
+            toast.error(error.message ?? "সাইন ইন ব্যর্থ হয়েছে!");
+            setLoading(false)
             return;
         }
 
         if(data) {
             toast.success("সফলভাবে সাইন ইন হয়েছে।");
+            router.push(redirectTo)
+            router.refresh();
         }
+
     };
 
     const handleGoogleSignIn = async () => {
-        await authClient.signIn.social({
-            provider: "google",
-            callbackURL: "/",
-        });
+    const { data, error } = await authClient.signIn.social({
+        provider: "google",
+        callbackURL: redirectTo,
+    });
+
+    if (error) {
+        toast.error(error.message ?? "সাইন ইন করতে সমস্যা হয়েছে।");
+    }
+        if(data) {
+            toast.success("গুগল সাইন ইন সফল হয়েছে।");
+        }
 };
 
     const handleGitHubSignIn = async () => {
-        await authClient.signIn.social({
+        const { data, error } = await authClient.signIn.social({
         provider: "github",
-        callbackURL: "/",
+        callbackURL: redirectTo,
     });
+
+        if(error) {
+            toast.error(error.message ?? "সাইন ইন করতে সমস্যা হয়েছে।");
+            return;
+        }
+        if(data) {
+            toast.success("গিটহাব দিয়ে সাইন ইন সফল হয়েছে।");
+        }
 };
 
     return (
@@ -87,7 +115,7 @@ const SignInForm = () => {
                     <div className="-mt-2 text-right text-sm">
                         <Link href="/forgot-password" className="font-medium text-[#07883e] hover:underline">পাসওয়ার্ড ভুলে গেছেন?</Link>
                     </div>
-                    <button type="submit" className="h-[50px] w-full rounded-xl bg-[#07883e] px-4 text-sm font-bold text-white shadow-sm transition hover:bg-[#067534] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#07883e]">সাইন ইন</button>
+                    <button type="submit" disabled={loading} className="h-[50px] w-full rounded-xl bg-[#07883e] px-4 text-sm font-bold text-white shadow-sm transition hover:bg-[#067534] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#07883e]">{loading ? "লোড হচ্ছে..." : "সাইন ইন"}</button>
                     <div className="flex items-center gap-4 py-1">
                         <div className="h-px flex-1 bg-[#dce5dd]" />
                         <span className="text-sm text-[#17251b]">অথবা</span>

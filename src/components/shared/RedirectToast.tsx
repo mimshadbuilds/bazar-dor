@@ -9,7 +9,7 @@ const RedirectToast = () => {
     const reason = searchParams.get("reason");
 
     useEffect(() => {
-        if (reason === "auth-required") {
+        if (reason === "protected") {
             toast.error("এই পেজটি দেখতে প্রথমে সাইন ইন করুন।", {
                 id: "protected-redirect",
             });

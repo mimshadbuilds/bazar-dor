@@ -9,7 +9,7 @@ export async function proxy(request: NextRequest) {
     if(!session) {
         const signInUrl = new URL("/sign-in", request.url);
         signInUrl.searchParams.set("redirect", request.nextUrl.pathname);
-        signInUrl.searchParams.set("reason", "auth-required");
+        signInUrl.searchParams.set("reason", "protected");
         return NextResponse.redirect(signInUrl);
     }
 
