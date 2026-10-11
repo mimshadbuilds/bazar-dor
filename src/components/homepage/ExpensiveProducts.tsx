@@ -7,7 +7,7 @@ const ExpensiveProducts = async () => {
     const pricedProducts = await getProducts();
     const filteredProducts = [...pricedProducts].filter(product => product.change.dir === 'up');
     const topSixExpProducts: IProducts[] = filteredProducts.sort((a, b) => b.change.pct - a.change.pct).slice(0, 6);
-    // console.log(topSixExpProducts)
+    
     return (
         <section className="bg-[#f0f5f0] px-2 py-8 sm:px-3 lg:px-4">
             <div className="mx-auto w-full max-w-6xl">

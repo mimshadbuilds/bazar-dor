@@ -61,7 +61,7 @@ const ProductSort = ({ products }: { products: IProducts[] }) => {
                 </div>
             ) : (
                 <p className="rounded-2xl border border-[#e0e8e1] bg-[#fbfdfb] p-8 text-center text-sm text-[#69766b]">
-                    কোনো পণ্য পাওয়া যায়নি।
+                    এখানে কোনো পণ্য পাওয়া যায়নি।
                 </p>
             )}
         </>

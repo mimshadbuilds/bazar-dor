@@ -12,7 +12,6 @@ export async function proxy(request: NextRequest) {
         signInUrl.searchParams.set("reason", "protected");
         return NextResponse.redirect(signInUrl);
     }
-
     return NextResponse.next();
 }
 

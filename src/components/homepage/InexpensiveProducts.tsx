@@ -6,7 +6,7 @@ const InexpensiveProducts = async () => {
         const cheapProducts = await getProducts();
         const filteredProducts = [...cheapProducts].filter(product => product.change.dir === 'down');
         const topSixCheapProducts = filteredProducts.sort((a, b) => a.change.pct - b.change.pct).slice(0, 6);
-        // console.log(topSixCheapProducts)
+        
     return (
         <section className="bg-[#f0f5f0] px-4 py-8 sm:px-6 lg:px-8">
             <div className="mx-auto w-full max-w-6xl">
