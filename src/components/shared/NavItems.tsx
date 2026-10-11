@@ -16,7 +16,7 @@ const NavLinkItem = ({ slug, nameBn, icon }: NavLinkItemProps) => {
 
     return (
         <Link href={href}
-            className={`btn-sm flex shrink-0 items-center rounded-lg px-1.5 py-1.5 font-medium transition ${
+            className={`btn-sm flex shrink-0 items-center rounded-lg px-1.5 py-1.5 font-semibold transition ${
             isActive
             ? "bg-[#05893E] text-white"
             : "text-[#26352a] hover:bg-[#e1f2e7] hover:text-[#05893E]"

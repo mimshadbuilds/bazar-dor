@@ -9,9 +9,9 @@ const MarqueePage = async () => {
     // console.log(products)
         
     return (
-        <div className="sticky top-0 z-40 w-full border-y border-slate-200 bg-white text-slate-800">
-            <div className="mx-auto flex w-full max-w-7xl">
-                <div className="z-10 flex shrink-0 items-center border-r border-slate-200 bg-slate-50 px-3 py-2.5 text-sm font-semibold whitespace-nowrap sm:px-4">
+        <div className="sticky top-0 z-40 w-full border-y border-slate-100 bg-white text-slate-800">
+            <div className="mx-auto flex w-full max-w-[1290px]">
+                <div className="z-10 flex shrink-0 items-center border-r border-slate-200 bg-neutral-50 px-3 py-2.5 text-sm font-semibold whitespace-nowrap sm:px-4">
                     সর্বশেষ দর
                 </div>
                 <div className="min-w-0 flex-1 overflow-hidden">
@@ -25,8 +25,17 @@ const MarqueePage = async () => {
                                     className="inline-flex items-center border-r border-slate-200 px-4 py-2.5 text-sm whitespace-nowrap transition-colors hover:bg-slate-50">
                                     <span className="mr-2 text-base">{product.image}</span>
                                     <span className="font-medium text-slate-800">{product.nameBn}</span>
-                                    <span className="mx-1.5 text-slate-400">{product.today.toLocaleString("bn-BD")} {product.unit === "kg" ? "টাকা/কেজি" : product.unit}</span>
-                                    <span className={`font-semibold ${isDown ? "text-emerald-600" : "text-red-600"}`}>
+                                    <span className="mx-1.5 text-slate-400">{product.today.toLocaleString("bn-BD")}{" "} {product.unit === "kg" 
+                                    ? "টাকা/কেজি" 
+                                    : product.unit === "litre" 
+                                    ? "টাকা/লিটার"
+                                    : product.unit === "dozen"
+                                    ? "টাকা/ডজন"
+                                    : product.unit === "piece"
+                                    ? "টাকা/পিস"
+                                    : product.unit}
+                                    </span>
+                                    <span className={`font-bold ${isDown ? "text-emerald-600" : "text-red-600"}`}>
                                         {direction} {Math.abs(product.change.pct).toLocaleString("bn-BD")}%
                                     </span>
                                 </Link>

@@ -10,7 +10,7 @@ import { Toaster } from "react-hot-toast";
 
 const hindsiliguri = Hind_Siliguri({
   subsets: ["bengali", "latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "600","700"],
 });
 
 export const metadata: Metadata = {

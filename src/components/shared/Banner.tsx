@@ -17,7 +17,7 @@ const Banner = async () => {
                     <p className="inline-block rounded-full bg-[#e1f2e7] px-4 py-1.5 text-sm font-medium text-[#05893e]">
                         {date}
                     </p>
-                    <h1 className="max-w-[650px] text-2xl sm:text-[38px] font-bold leading-tight tracking-[-0.02em] text-[#111] sm:text-[42px] lg:text-[46px]">
+                    <h1 className="max-w-[650px] text-2xl sm:text-[38px] font-extrabold leading-tight tracking-[-0.02em] text-[#111] sm:text-[42px] lg:text-[46px]">
                         আজকের বাজারের দাম এক নজরে
                     </h1>
                     <p className="max-w-170 text-sm leading-[1.6] sm:leading-[1.8] text-[#555] sm:text-[17px]">

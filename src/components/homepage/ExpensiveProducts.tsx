@@ -9,7 +9,7 @@ const ExpensiveProducts = async () => {
     const topSixExpProducts: IProducts[] = filteredProducts.sort((a, b) => b.change.pct - a.change.pct).slice(0, 6);
     // console.log(topSixExpProducts)
     return (
-        <section className="bg-[#f0f5f0] px-4 py-8 sm:px-6 lg:px-8">
+        <section className="bg-[#f0f5f0] px-2 py-8 sm:px-3 lg:px-4">
             <div className="mx-auto w-full max-w-6xl">
                 <div className="mb-4 flex items-center gap-2">
                     <span className="text-lg text-red-500">▲</span>

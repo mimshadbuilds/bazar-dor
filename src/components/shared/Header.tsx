@@ -31,7 +31,7 @@ const Header = async () => {
                     </div>
                 </div>
             </div>
-            <div className=" px-4 py-2 bg-white">
+            <div className="px-4 py-2 bg-white">
                 <NavLinks />
             </div>
         </section>
