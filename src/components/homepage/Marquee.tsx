@@ -15,7 +15,7 @@ const MarqueePage = async () => {
                     সর্বশেষ দর
                 </div>
                 <div className="min-w-0 flex-1 overflow-hidden">
-                    <MarqueeText direction="right" duration={10}>
+                    <MarqueeText direction="right" duration={8}>
                         {products.map((product) => {
                             const isDown = product.change.dir === "down";
                             const direction = isDown ? "▼" : "▲";

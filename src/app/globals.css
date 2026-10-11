@@ -2,4 +2,11 @@
 @plugin "daisyui" {
     exclude: toast
 };
+
+
 @import "@heroui/styles";
+
+@layer utilities {
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+}
